@@ -68,6 +68,8 @@ jobs:
           sed -i "s/tag: .*/tag: ${{ env.PROJECT_VERSION }}/" values_staging.yml
 
       - name: Commit and push changes to GitOps repository
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
