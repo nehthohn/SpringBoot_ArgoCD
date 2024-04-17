@@ -69,15 +69,15 @@ jobs:
 
       - name: Commit and push changes to GitOps repository
         env:
-          GH_TOKEN: $(gh.token)
+          GH_TOKEN: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git checkout -b Temp
+          git checkout -b Temp1
           git add values_staging.yml
           git commit --allow-empty -m "Deploy ${{ env.PROJECT_VERSION }} to staging"
-          git push origin Temp
-          gh pr create --base main --head Temp --title "Deploy ${{ env.PROJECT_VERSION }} to staging" --body "This pull request deploys version ${{ env.PROJECT_VERSION }} to the staging environment."
+          git push origin Temp1
+          gh pr create --base main --head Temp1 --title "Deploy ${{ env.PROJECT_VERSION }} to staging" --body "This pull request deploys version ${{ env.PROJECT_VERSION }} to the staging environment."
 
       - name: Wait for ArgoCD deployment
         run: |
@@ -113,8 +113,8 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git checkout -b Temp
+          git checkout -b Temp1
           git add values_production.yml
           git commit --allow-empty -m "Deploy ${{ env.PROJECT_VERSION }} to production"
-          git push origin Temp
-          gh pr create --base main --head Temp --title "Deploy ${{ env.PROJECT_VERSION }} to staging" --body "This pull request deploys version ${{ env.PROJECT_VERSION }} to the production environment."
+          git push origin Temp1
+          gh pr create --base main --head Temp1 --title "Deploy ${{ env.PROJECT_VERSION }} to staging" --body "This pull request deploys version ${{ env.PROJECT_VERSION }} to the production environment."
