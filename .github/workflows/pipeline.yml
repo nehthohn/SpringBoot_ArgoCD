@@ -69,7 +69,7 @@ jobs:
 
       - name: Commit and push changes to GitOps repository
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: $(gh.token)
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
