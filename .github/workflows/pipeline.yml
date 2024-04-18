@@ -73,7 +73,7 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git checkout TempSta
+          git checkout -b TempSta
           git add values_staging.yml
           git commit --allow-empty -m "Deploy ${{ env.PROJECT_VERSION }} to staging"
           git push origin TempSta
@@ -115,7 +115,7 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git checkout TempPro
+          git checkout -b TempPro
           git add values_production.yml
           git commit --allow-empty -m "Deploy ${{ env.PROJECT_VERSION }} to production"
           git push origin TempPro
