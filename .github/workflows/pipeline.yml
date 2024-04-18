@@ -76,6 +76,7 @@ jobs:
           git checkout -b TempSta
           git add values_staging.yml
           git commit --allow-empty -m "Deploy ${{ env.PROJECT_VERSION }} to staging"
+          git pull
           git push origin TempSta
           gh pr create --base main --head TempSta --title "Deploy ${{ env.PROJECT_VERSION }} to staging" --body "This pull request deploys version ${{ env.PROJECT_VERSION }} to the staging environment."
 
@@ -118,5 +119,6 @@ jobs:
           git checkout -b TempPro
           git add values_production.yml
           git commit --allow-empty -m "Deploy ${{ env.PROJECT_VERSION }} to production"
+          git pull
           git push origin TempPro
           gh pr create --base main --head TempPro --title "Deploy ${{ env.PROJECT_VERSION }} to staging" --body "This pull request deploys version ${{ env.PROJECT_VERSION }} to the production environment."
