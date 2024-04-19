@@ -93,6 +93,7 @@ jobs:
           # You may use Newman for system testing
           # Example:
           # newman run collection.json -e environment.json
+          newman run ../../tests/system/API_Test.postman_collection.json
 
   deploy-to-production:
     runs-on: ubuntu-latest
