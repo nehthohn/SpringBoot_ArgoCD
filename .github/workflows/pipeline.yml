@@ -88,12 +88,18 @@ jobs:
           # argocd app wait <APP_NAME> --timeout 300
 
       - name: Run system tests
+        with:
+          repository: ${{ github.actor }}/SpringBoot_ArgoCD
+          token: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
+          ref: release
         run: |
           # Add the execution of further tests here 
           # You may use Newman for system testing
           # Example:
           # newman run collection.json -e environment.json
-          # newman run ../../tests/system/API_Test.postman_collection.json -e environment.json
+          checkout release
+          # ev. install newman
+          newman run ../../tests/system/API_Test.postman_collection.json -e environment.json
 
   deploy-to-production:
     runs-on: ubuntu-latest
