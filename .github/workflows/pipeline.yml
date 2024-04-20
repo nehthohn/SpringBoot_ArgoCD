@@ -88,6 +88,7 @@ jobs:
           # argocd app wait <APP_NAME> --timeout 300
 
       - name: Run system tests
+        uses: actions/checkout@v4
         with:
           repository: ${{ github.actor }}/SpringBoot_ArgoCD
           token: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
